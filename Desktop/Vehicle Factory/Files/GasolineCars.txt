@@ -1,0 +1,4 @@
+
+Mercedes,G class,2008,1000,22ag352,80.0,150,50,6,4
+Lamborghini,Huracan,2019,100,28mm513,150.0,170,19,8,4
+Lamborghini,Urus,2017,20000,78gm312,110.0,130,14,12,5

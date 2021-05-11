@@ -90,6 +90,7 @@ public class GasolineCar extends Car {
 
     public void setCurrentGasLevel(int currentGasLevel) throws InvalidGasLevelException {
         if(currentGasLevel<0 || currentGasLevel>tankSize){
+            System.out.println(this.tankSize);
             throw new InvalidGasLevelException();
         }
 
@@ -124,13 +125,13 @@ public class GasolineCar extends Car {
     }
 
 
+    public Engine getEngine() {
+        return engine.clone();
+    }
 
-
-
-
-
-
-
+    public int getEngineExpRate(){
+        return getEngine().expenditureRate;
+    }
 
     @Override
     public GasolineCar clone() throws CloneNotSupportedException {
@@ -148,7 +149,11 @@ public class GasolineCar extends Car {
 
     @Override
     public String toString() {
-        return super.toString() + ", Tank Size: " + tankSize + "liters,  Gas Level: " + currentGasLevel + "levels, " + engine.toString();
+        return super.toString() + ", Tank Size: " + tankSize + "liters,  Gas Level: " + currentGasLevel + "liters, " + engine.toString();
+    }
+
+    public String toStringForSave(){
+        return getBrand() + "," +getModel()+","+getProductionYear()+"," + getMileage()+"," + getPlateNumber()+","+ getSpeed()+"," + tankSize+","+currentGasLevel+","+ engine.numberOfCylinders+","+engine.expenditureRate;
     }
 
 
@@ -203,6 +208,10 @@ public class GasolineCar extends Car {
             }
 
             expenditureRate = rate;
+        }
+
+        public int getExpenditureRate() {
+            return expenditureRate;
         }
 
         public Engine clone(){
