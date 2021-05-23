@@ -42,6 +42,7 @@ public class MainMenu extends JFrame  {
         setResizable(false);
         setLayout(null);
         setVisible(true);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
 
