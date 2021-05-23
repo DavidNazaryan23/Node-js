@@ -1,9 +1,4 @@
-import gui.MainPage;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import gui.MainMenu;
 
 public class Main {
 
@@ -21,7 +16,7 @@ public class Main {
 //            e.printStackTrace();
 //        }
 
-      MainPage page = new MainPage();
+      MainMenu page = new MainMenu();
 
 
 

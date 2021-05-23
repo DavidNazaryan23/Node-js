@@ -4,12 +4,12 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MainPage extends JFrame  {
+public class MainMenu extends JFrame  {
 
     JButton signUpButton;
     JButton signInButton;
 
-    public MainPage() {
+    public MainMenu() {
         setTitle("Main Page");
 
 
@@ -20,7 +20,7 @@ public class MainPage extends JFrame  {
         signUpButton.setBounds(166,200,150,40);
         signUpButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                RegistrationPage page = new RegistrationPage();
+                Registration page = new Registration();
             }
         });
 
@@ -29,7 +29,7 @@ public class MainPage extends JFrame  {
         signInButton.setBounds(466,200,150,40);
         signInButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                LoginPage page = new LoginPage();
+                Login page = new Login();
             }
         });
 

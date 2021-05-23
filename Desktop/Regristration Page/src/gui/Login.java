@@ -7,63 +7,36 @@ import java.awt.event.*;
 import appLogic.*;
 import exceptions.*;
 
-class RegistrationPage
+class Login
         extends JFrame
-   {
+{
 
     private Container c;
     private JLabel title;
-    private JLabel fullName;
-    private JTextField fullNameText;
-    private JLabel username;
-    private JTextField usernameText;
     private JLabel email;
     private JTextField emailText;
-    private JButton signUp;
+    private JButton signIn;
     private JButton reset;
     private JLabel password;
     private JTextField passwordText;
     private JLabel resultText;
 
 
-    public RegistrationPage()
+    public Login()
     {
-        setTitle("Registration Form");
+        setTitle("Login Form");
         setBounds(300, 90, 900, 600);
         setResizable(false);
 
         c = getContentPane();
         c.setLayout(null);
 
-        title = new JLabel("Registration Form");
+        title = new JLabel("Login Form");
         title.setFont(new Font("Arial", Font.PLAIN, 30));
         title.setSize(300, 30);
-        title.setLocation(300, 30);
+        title.setLocation(300, 100);
         c.add(title);
 
-        fullName = new JLabel("Name");
-        fullName.setFont(new Font("Arial", Font.PLAIN, 20));
-        fullName.setSize(100, 20);
-        fullName.setLocation(250, 100);
-        c.add(fullName);
-
-        fullNameText = new JTextField();
-        fullNameText.setFont(new Font("Arial", Font.PLAIN, 15));
-        fullNameText.setSize(190, 20);
-        fullNameText.setLocation(350, 100);
-        c.add(fullNameText);
-
-        username = new JLabel("Username");
-        username.setFont(new Font("Arial", Font.PLAIN, 20));
-        username.setSize(100, 20);
-        username.setLocation(250, 150);
-        c.add(username);
-
-        usernameText = new JTextField();
-        usernameText.setFont(new Font("Arial", Font.PLAIN, 15));
-        usernameText.setSize(190, 20);
-        usernameText.setLocation(350, 150);
-        c.add(usernameText);
 
         email = new JLabel("Email");
         email.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -100,34 +73,35 @@ class RegistrationPage
 
 
 
-        signUp = new JButton("Submit");
-        signUp.setFont(new Font("Arial", Font.PLAIN, 15));
-        signUp.setSize(100, 20);
-        signUp.setLocation(300, 350);
+        signIn = new JButton("Submit");
+        signIn.setFont(new Font("Arial", Font.PLAIN, 15));
+        signIn.setSize(100, 20);
+        signIn.setLocation(300, 350);
 
 
-        signUp.addActionListener(new ActionListener() {
+        signIn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String fullName = fullNameText.getText();
-                String username = usernameText.getText();
+
                 String email = emailText.getText();
                 String password = passwordText.getText();
 
                 try {
 
-                    Authorization.registerUser(fullName,email,username,password);
+                    Authorization.logIn(email,password);
 
                     resultText.setForeground(Color.GREEN);
-                    resultText.setText("User Created Successfully");
+                    resultText.setText("Logged In Successfully");
 
 
 
 
 
-                } catch (InvalidNameException | InvalidEmailException | InvalidUsernameException | InvalidPasswordException | ExistingUserException exception ){
+                } catch (InvalidPasswordException | NoSuchUserException exception ){
+
                     resultText.setForeground(Color.RED);
                     resultText.setText(exception.getMessage());
+
                 }
 
 
@@ -136,7 +110,7 @@ class RegistrationPage
             }
         });
 
-        c.add(signUp);
+        c.add(signIn);
 
         reset = new JButton("Reset");
         reset.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -146,8 +120,7 @@ class RegistrationPage
         reset.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                fullNameText.setText(null);
-                usernameText.setText(null);
+
                 emailText.setText(null);
                 passwordText.setText(null);
                 resultText.setText(null);
